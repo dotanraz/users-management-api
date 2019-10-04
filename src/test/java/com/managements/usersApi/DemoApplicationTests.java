@@ -24,6 +24,7 @@ public class DemoApplicationTests {
 		user.setFirstName("avwewrwi");
 		user.setLastName("hj343");
 		IUserService userService = new UserServiceImpl();
+		logger.info("adding user to db");
 		userService.addUser(user);
 		userService.getAllUsers();
 
