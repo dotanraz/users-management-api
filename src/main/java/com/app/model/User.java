@@ -7,20 +7,36 @@ public class User {
     private String lastName;
     private double weight;
     private long dateOfBirth;
+    private int id;
 
 //    public User(@JsonProperty("firstName") String firstName,
 //                @JsonProperty("lastName") String lastName,
 //                @JsonProperty("weight")double weight,
 //                @JsonProperty("dateOfBirth")long dateOfBirth) {
-        public User(String firstName, String lastName, double weight, long dateOfBirth) {
+    public User(String firstName, String lastName, double weight, long dateOfBirth) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.weight = weight;
         this.dateOfBirth = dateOfBirth;
     }
 
-    public User() {
+    public User(String firstName, String lastName, double weight, long dateOfBirth, int id) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.weight = weight;
+        this.dateOfBirth = dateOfBirth;
+        this.id = id;
+    }
 
+    public User() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {

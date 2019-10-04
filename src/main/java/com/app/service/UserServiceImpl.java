@@ -4,7 +4,6 @@ import com.app.model.User;
 import com.app.sql.QueryExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +20,7 @@ public class UserServiceImpl implements IUserService{
     @Override
     public void createUserTableIfNotExist() throws SQLException {
         String query = "CREATE TABLE IF NOT EXISTS USERS " +
-                "(ID serial, FIRST_NAME varchar(100) NOT NULL, " +
+                "(BIG SERIAL PRIMARY KEY, FIRST_NAME varchar(100) NOT NULL, " +
                 "LAST_NAME varchar(100) NOT NULL)";
         QueryExecutor.executeQuery(query);
     }
@@ -34,14 +33,15 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public User getUser(int id) throws SQLException {
-        String query = String.format("SELECT * FROM USERS WHERE ID=%d",id);
+    public Object getUser(int id) throws SQLException {
+        String query = String.format("SELECT * FROM USERS WHERE id=%d",id);
         List<Map<String, Object>> list = QueryExecutor.executeQueryWithResults(query);
         if (list.isEmpty()) {
-            return null;
+            return "no user with that id!";
         }
         Map<String, Object> row = list.get(0);
         User user = new User();
+        user.setId((int)row.get("id"));
         user.setFirstName(row.get("first_name").toString());
         user.setLastName(row.get("last_name").toString());
         return user;
@@ -56,9 +56,10 @@ public class UserServiceImpl implements IUserService{
             return null;
         }
         rows.stream().forEach(row -> {
+            int id = (int)row.get("id");
             String firstName = row.get("first_name").toString();
             String lastName = row.get("last_name").toString();
-            users.add(new User(firstName, lastName, 0, 0));
+            users.add(new User(firstName, lastName, 0, 0, id));
         });
         return users;
     }

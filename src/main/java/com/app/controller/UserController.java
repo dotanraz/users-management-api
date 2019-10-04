@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.UUID;
 
 
 @RequestMapping("api/v1/users")
@@ -23,6 +24,11 @@ public class UserController {
     @GetMapping
     public List<User> getAllUsers() throws SQLException {
         return userService.getAllUsers();
+    }
+
+    @GetMapping(path = "{id}")
+    public Object getUserById(@PathVariable("id")int id) throws SQLException {
+        return userService.getUser(id);
     }
 
     @PostMapping
