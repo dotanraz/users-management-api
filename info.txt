@@ -1,0 +1,7 @@
+docker system prune
+sudo kill -9 `sudo lsof -t -i:5432`
+docker run --name postgres1 -e POSTGRES_PASSWORD=1234 -p 5432:5432 -d postgres
+
+docker exec -it postgres1
+psql -U postgres
+
