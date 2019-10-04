@@ -22,13 +22,19 @@ public class UserController {
     }
 
     @GetMapping
-    public List<User> getAllUsers() throws SQLException {
-        return userService.getAllUsers();
+    public Object getAllUsers() throws SQLException {
+        if (userService.getAllUsers() == null) {
+            return "there are no users in the system";
+        }
+        else return userService.getAllUsers();
     }
 
     @GetMapping(path = "{id}")
     public Object getUserById(@PathVariable("id")int id) throws SQLException {
-        return userService.getUser(id);
+        if (userService.getUser(id) == null) {
+            return "no user with that id!";
+        }
+        else return userService.getUser(id);
     }
 
     @PostMapping

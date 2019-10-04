@@ -20,7 +20,7 @@ public class UserServiceImpl implements IUserService{
     @Override
     public void createUserTableIfNotExist() throws SQLException {
         String query = "CREATE TABLE IF NOT EXISTS USERS " +
-                "(BIG SERIAL PRIMARY KEY, FIRST_NAME varchar(100) NOT NULL, " +
+                "(ID SERIAL PRIMARY KEY, FIRST_NAME varchar(100) NOT NULL, " +
                 "LAST_NAME varchar(100) NOT NULL)";
         QueryExecutor.executeQuery(query);
     }
@@ -33,11 +33,11 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public Object getUser(int id) throws SQLException {
+    public User getUser(int id) throws SQLException {
         String query = String.format("SELECT * FROM USERS WHERE id=%d",id);
         List<Map<String, Object>> list = QueryExecutor.executeQueryWithResults(query);
         if (list.isEmpty()) {
-            return "no user with that id!";
+            return null;
         }
         Map<String, Object> row = list.get(0);
         User user = new User();

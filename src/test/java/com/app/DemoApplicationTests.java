@@ -28,7 +28,7 @@ public class DemoApplicationTests {
 		logger.info("adding user to db");
 		userService.addUser(user);
 		List<User> allUsers = userService.getAllUsers();
-		User user1 = userService.getUser(1);
+		User user1 = (User)userService.getUser(1);
 
 	}
 
