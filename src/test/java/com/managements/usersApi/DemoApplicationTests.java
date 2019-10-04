@@ -21,8 +21,8 @@ public class DemoApplicationTests {
 
 		logger.info("this is a logger test");
 		User user = new User();
-		user.setFirstName("avwewrwi");
-		user.setLastName("hj343");
+		user.setFirstName("somefirtName");
+		user.setLastName("someLastName");
 		IUserService userService = new UserServiceImpl();
 		logger.info("adding user to db");
 		userService.addUser(user);

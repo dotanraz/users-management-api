@@ -4,6 +4,7 @@ public class User {
     private String firstName;
     private String lastName;
     private double weight;
+    private long dateOfBirth;
 
     public String getFirstName() {
         return firstName;
@@ -28,4 +29,13 @@ public class User {
     public void setWeight(double weight) {
         this.weight = weight;
     }
+
+    public long getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(long dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
 }
