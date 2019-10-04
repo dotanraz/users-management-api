@@ -1,4 +1,4 @@
-package com.managements.usersApi.environment;
+package com.app.environment;
 
 public class EnvConstants {
 

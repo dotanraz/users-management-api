@@ -1,4 +1,4 @@
-package com.managements.usersApi.sql;
+package com.app.sql;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;

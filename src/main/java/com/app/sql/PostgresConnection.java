@@ -1,6 +1,6 @@
-package com.managements.usersApi.sql;
+package com.app.sql;
 
-import com.managements.usersApi.environment.EnvConstants;
+import com.app.environment.EnvConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

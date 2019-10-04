@@ -1,10 +1,27 @@
-package com.managements.usersApi.model;
+package com.app.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class User {
     private String firstName;
     private String lastName;
     private double weight;
     private long dateOfBirth;
+
+//    public User(@JsonProperty("firstName") String firstName,
+//                @JsonProperty("lastName") String lastName,
+//                @JsonProperty("weight")double weight,
+//                @JsonProperty("dateOfBirth")long dateOfBirth) {
+        public User(String firstName, String lastName, double weight, long dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.weight = weight;
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public User() {
+
+    }
 
     public String getFirstName() {
         return firstName;
