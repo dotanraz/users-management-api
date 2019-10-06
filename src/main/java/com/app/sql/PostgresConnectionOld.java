@@ -8,20 +8,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class PostgresConnection {
+public class PostgresConnectionOld {
 
-    private static final Logger logger = LoggerFactory.getLogger(PostgresConnection.class);
-    private static PostgresConnection instance = null;
+    private static final Logger logger = LoggerFactory.getLogger(PostgresConnectionOld.class);
+    private static PostgresConnectionOld instance = null;
     private Connection connection;
 
-    public static PostgresConnection getInstance() throws SQLException {
+    public static PostgresConnectionOld getInstance() throws SQLException {
         if (instance == null)
-            instance = new PostgresConnection();
+            instance = new PostgresConnectionOld();
         return instance;
     }
 
 
-    private PostgresConnection() throws SQLException {
+    private PostgresConnectionOld() throws SQLException {
             this.connection  = DriverManager.getConnection(
                     EnvConstants.POSTGRES_PATH,
                     EnvConstants.POSTGRES_USERNAME,

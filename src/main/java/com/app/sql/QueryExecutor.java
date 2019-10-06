@@ -5,6 +5,8 @@ import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,27 +17,20 @@ public class QueryExecutor {
 
     private static final Logger logger = LoggerFactory.getLogger(QueryExecutor.class);
 
-    private static Connection connection;
-
-    static {
-        try {
-            connection = PostgresConnection.getInstance().getConnection();
-        } catch (SQLException e) {
-            logger.error(e.getMessage(), e);
-        }
-    }
-
-    public static void executeQuery(String query) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement(query);
+    public static void executeQuery(String query) throws SQLException, IOException, PropertyVetoException {
+        logger.trace("going to execute query:\n" + query);
+        PreparedStatement ps = PostgresDbConnection.getInstance().getConnection().prepareStatement(query);
         ps.executeUpdate();
         ps.close();
     }
 
-    public static List<Map<String, Object>> executeQueryWithResults(String query) throws SQLException {
+    public static List<Map<String, Object>> executeQueryWithResults(String query) throws SQLException, IOException, PropertyVetoException {
+        logger.trace("going to execute query:\n" + query);
         MapListHandler beanListHandler = new MapListHandler();
         QueryRunner runner = new QueryRunner();
         List<Map<String, Object>> list
-                = runner.query(connection, query, beanListHandler);
+                = runner.query(PostgresDbConnection.getInstance().getConnection(), query, beanListHandler);
         return list;
     }
+
 }

@@ -4,6 +4,9 @@ import com.app.model.User;
 import com.app.sql.QueryExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,12 +16,12 @@ import java.util.Map;
 public class UserServiceImpl implements IUserService{
 
     @Autowired
-    public UserServiceImpl() throws SQLException {
+    public UserServiceImpl() throws Exception {
         createUserTableIfNotExist();
     }
 
     @Override
-    public void createUserTableIfNotExist() throws SQLException {
+    public void createUserTableIfNotExist() throws Exception {
         String query = "CREATE TABLE IF NOT EXISTS USERS " +
                 "(ID SERIAL PRIMARY KEY, FIRST_NAME varchar(100) NOT NULL, " +
                 "LAST_NAME varchar(100) NOT NULL)";
@@ -26,14 +29,14 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public void addUser(User user) throws SQLException {
+    public void addUser(User user) throws Exception {
         String query = String.format("INSERT INTO USERS(FIRST_NAME,LAST_NAME) "
                 + "VALUES('%s','%s')", user.getFirstName(), user.getLastName());
         QueryExecutor.executeQuery(query);
     }
 
     @Override
-    public User getUser(int id) throws SQLException {
+    public User getUser(int id) throws Exception {
         String query = String.format("SELECT * FROM USERS WHERE id=%d",id);
         List<Map<String, Object>> list = QueryExecutor.executeQueryWithResults(query);
         if (list.isEmpty()) {
@@ -48,7 +51,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public List<User> getAllUsers() throws SQLException {
+    public List<User> getAllUsers() throws Exception {
         List<User> users = new ArrayList<>();
         String query = "SELECT * FROM USERS";
         List<Map<String, Object>> rows = QueryExecutor.executeQueryWithResults(query);
