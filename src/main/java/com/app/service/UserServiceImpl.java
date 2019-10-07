@@ -16,7 +16,7 @@ import java.util.Map;
 public class UserServiceImpl implements IUserService{
 
     @Autowired
-    public UserServiceImpl() throws Exception {
+    public UserServiceImpl() throws SQLException {
         createUserTableIfNotExist();
     }
 
