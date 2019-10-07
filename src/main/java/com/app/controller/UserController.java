@@ -41,4 +41,14 @@ public class UserController {
         userService.addUser(user);
     }
 
+    @DeleteMapping(path = "{id}")
+    public void deleteUser(@PathVariable("id")int id) throws Exception {
+        userService.deleteUser(id);
+    }
+
+    @PostMapping(path = "{id}")
+    public void updateUser(@PathVariable("id")int id, @RequestBody User user) throws Exception {
+        userService.updateUser(id, user);
+    }
+
 }

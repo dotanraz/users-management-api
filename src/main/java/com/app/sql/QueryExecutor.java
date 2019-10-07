@@ -15,7 +15,7 @@ public class QueryExecutor {
     private static final Logger logger = LoggerFactory.getLogger(QueryExecutor.class);
 
     public static void executeQuery(String query) throws SQLException {
-        logger.trace("going to execute query:\n" + query);
+        logger.info("going to execute query:\n" + query);
         Connection connection = null;
         try {
             connection = PostgresDbConnection.getInstance().getConnection();
@@ -32,7 +32,7 @@ public class QueryExecutor {
     }
 
     public static List<Map<String, Object>> executeQueryWithResults(String query) throws SQLException {
-        logger.trace("going to execute query:\n" + query);
+        logger.info("going to execute query:\n" + query);
         List<Map<String, Object>> list = null;
         Connection connection = null;
         try {

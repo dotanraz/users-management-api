@@ -68,13 +68,17 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public void updateUser(int id, User user) {
-
+    public void updateUser(int id, User user) throws SQLException {
+        String query = String.format("UPDATE USERS " +
+                        "SET FIRST_NAME = '%s', LAST_NAME = '%s' " +
+                        "WHERE ID = '%s'", user.getFirstName(), user.getLastName(), id);
+        QueryExecutor.executeQuery(query);
     }
 
     @Override
-    public void deleteUser(int id) {
-
+    public void deleteUser(int id) throws SQLException {
+        String query = "DELETE FROM USERS WHERE USERS.ID=" + id;
+        QueryExecutor.executeQuery(query);
     }
 
 }

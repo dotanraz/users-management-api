@@ -1,16 +1,13 @@
 package com.app.sql;
 
-import java.beans.PropertyVetoException;
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
-
 import com.app.environment.EnvConstants;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class PostgresDbConnection {
 
-    private static PostgresDbConnection datasource;
+    private static PostgresDbConnection postgresDbConnection;
     private BasicDataSource ds;
 
     private PostgresDbConnection() {
@@ -26,12 +23,12 @@ public class PostgresDbConnection {
 
     }
 
-    public static PostgresDbConnection getInstance() throws IOException, SQLException, PropertyVetoException {
-        if (datasource == null) {
-            datasource = new PostgresDbConnection();
-            return datasource;
+    public static PostgresDbConnection getInstance() {
+        if (postgresDbConnection == null) {
+            postgresDbConnection = new PostgresDbConnection();
+            return postgresDbConnection;
         } else {
-            return datasource;
+            return postgresDbConnection;
         }
     }
 
