@@ -7,6 +7,7 @@ import org.apache.commons.dbcp2.BasicDataSource;
 
 public class PostgresDbConnection {
 
+    private String appName;
     private static PostgresDbConnection postgresDbConnection;
     private BasicDataSource ds;
 

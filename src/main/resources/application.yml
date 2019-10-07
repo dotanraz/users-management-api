@@ -1,0 +1,16 @@
+spring:
+  profiles: test
+name: test-YAML
+environment: test
+postgresPath: testpath
+postgresUser: testuser
+postgresPassword: testpass
+
+---
+spring:
+  profiles: prod
+name: prod-YAML
+environment: production
+postgresPath: testpath
+postgresUser: testuser
+postgresPassword: testpass
