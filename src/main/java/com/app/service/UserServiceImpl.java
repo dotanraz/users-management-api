@@ -21,7 +21,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public void createUserTableIfNotExist() throws Exception {
+    public void createUserTableIfNotExist() throws SQLException {
         String query = "CREATE TABLE IF NOT EXISTS USERS " +
                 "(ID SERIAL PRIMARY KEY, FIRST_NAME varchar(100) NOT NULL, " +
                 "LAST_NAME varchar(100) NOT NULL)";
@@ -29,14 +29,14 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public void addUser(User user) throws Exception {
+    public void addUser(User user) throws SQLException {
         String query = String.format("INSERT INTO USERS(FIRST_NAME,LAST_NAME) "
                 + "VALUES('%s','%s')", user.getFirstName(), user.getLastName());
         QueryExecutor.executeQuery(query);
     }
 
     @Override
-    public User getUser(int id) throws Exception {
+    public User getUser(int id) throws SQLException {
         String query = String.format("SELECT * FROM USERS WHERE id=%d",id);
         List<Map<String, Object>> list = QueryExecutor.executeQueryWithResults(query);
         if (list.isEmpty()) {
@@ -51,7 +51,7 @@ public class UserServiceImpl implements IUserService{
     }
 
     @Override
-    public List<User> getAllUsers() throws Exception {
+    public List<User> getAllUsers() throws SQLException {
         List<User> users = new ArrayList<>();
         String query = "SELECT * FROM USERS";
         List<Map<String, Object>> rows = QueryExecutor.executeQueryWithResults(query);
