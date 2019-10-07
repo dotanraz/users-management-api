@@ -4,6 +4,9 @@ import com.app.model.User;
 import com.app.sql.QueryExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.beans.PropertyVetoException;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +16,7 @@ import java.util.Map;
 public class UserServiceImpl implements IUserService{
 
     @Autowired
-    public UserServiceImpl() throws SQLException {
+    public UserServiceImpl() throws Exception {
         createUserTableIfNotExist();
     }
 

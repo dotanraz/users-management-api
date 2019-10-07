@@ -5,3 +5,13 @@ docker run --name postgres1 -e POSTGRES_PASSWORD=1234 -p 5432:5432 -d postgres
 docker exec -it postgres1
 psql -U postgres
 
+post req example:
+
+
+localhost:8080/api/v1/users
+{
+"firstName": "dina",
+"lastName": "gabay",
+"weight": 0.0,
+"dateOfBirth": 0
+}

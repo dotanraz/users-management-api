@@ -4,7 +4,6 @@ import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,27 +14,40 @@ public class QueryExecutor {
 
     private static final Logger logger = LoggerFactory.getLogger(QueryExecutor.class);
 
-    private static Connection connection;
-
-    static {
+    public static void executeQuery(String query) throws SQLException {
+        logger.trace("going to execute query:\n" + query);
+        Connection connection = null;
         try {
-            connection = PostgresConnection.getInstance().getConnection();
-        } catch (SQLException e) {
+            connection = PostgresDbConnection.getInstance().getConnection();
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.executeUpdate();
+            ps.close();
+        }
+        catch (Exception e) {
             logger.error(e.getMessage(), e);
+        }
+        finally {
+            connection.close();
         }
     }
 
-    public static void executeQuery(String query) throws SQLException {
-        PreparedStatement ps = connection.prepareStatement(query);
-        ps.executeUpdate();
-        ps.close();
-    }
-
     public static List<Map<String, Object>> executeQueryWithResults(String query) throws SQLException {
-        MapListHandler beanListHandler = new MapListHandler();
-        QueryRunner runner = new QueryRunner();
-        List<Map<String, Object>> list
-                = runner.query(connection, query, beanListHandler);
+        logger.trace("going to execute query:\n" + query);
+        List<Map<String, Object>> list = null;
+        Connection connection = null;
+        try {
+            connection = PostgresDbConnection.getInstance().getConnection();
+            MapListHandler beanListHandler = new MapListHandler();
+            QueryRunner runner = new QueryRunner();
+            list = runner.query(connection, query, beanListHandler);
+        }
+        catch (Exception e) {
+            logger.error(e.getMessage(), e);
+        }
+        finally {
+            connection.close();
+        }
         return list;
     }
+
 }

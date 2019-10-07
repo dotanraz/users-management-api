@@ -5,9 +5,7 @@ import com.app.service.IUserService;
 import com.app.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import java.sql.SQLException;
 import java.util.List;
-import java.util.UUID;
 
 
 @RequestMapping("api/v1/users")
@@ -17,20 +15,21 @@ public class UserController {
     private IUserService userService = new UserServiceImpl();
 
     @Autowired
-    public UserController() throws SQLException {
+    public UserController() throws Exception {
 
     }
 
     @GetMapping
-    public Object getAllUsers() throws SQLException {
-        if (userService.getAllUsers() == null) {
+    public Object getAllUsers() throws Exception {
+        List<User> allUsers = userService.getAllUsers();
+        if (allUsers == null) {
             return "there are no users in the system";
         }
-        else return userService.getAllUsers();
+        else return allUsers;
     }
 
     @GetMapping(path = "{id}")
-    public Object getUserById(@PathVariable("id")int id) throws SQLException {
+    public Object getUserById(@PathVariable("id")int id) throws Exception {
         if (userService.getUser(id) == null) {
             return "no user with that id!";
         }
@@ -38,7 +37,7 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(@RequestBody User user) throws SQLException {
+    public void addUser(@RequestBody User user) throws Exception {
         userService.addUser(user);
     }
 
