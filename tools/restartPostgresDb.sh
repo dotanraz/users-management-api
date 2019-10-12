@@ -16,5 +16,5 @@ docker system prune -f
 echo hard un-binding port 5432...
 sudo kill -9 `sudo lsof -t -i:5432`
 echo start postgres container...
-docker run --name postgres1 -e POSTGRES_PASSWORD=1234 -p 5432:5432 -d postgres
+docker run --name postgres1 -e PGDATA=/tmp -e POSTGRES_PASSWORD=1234 -p 5432:5432 -v /home/squid/Documents/dbs/postgres1:/var/lib/postgresql/data -d postgres
 docker ps
