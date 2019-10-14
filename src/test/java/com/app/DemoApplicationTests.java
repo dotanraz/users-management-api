@@ -3,6 +3,7 @@ package com.app;
 import com.app.model.User;
 import com.app.service.IUserService;
 import com.app.service.UserServiceImpl;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ public class DemoApplicationTests {
 
 	private static final Logger logger = LoggerFactory.getLogger(DemoApplicationTests.class);
 
+	@Ignore
 	@Test
 	public void contextLoads() throws SQLException {
 
