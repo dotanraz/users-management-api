@@ -1,3 +1,4 @@
+
 # users-management-api
 a User Management REST API system.
 
@@ -14,11 +15,11 @@ a User Management REST API system.
                than run:  Docker run user-mngmnt-api:latest --networks=host
 
 **Endpoints**
- - Get Requests:
+ - Get Requests:<br />
 	 Get All Users: localhost:8080/api/v1/users
      Get User by Id: localhost:8080/api/v1/users/{id}
 	     e.g localhost:8080/api/v1/users/33
- - Post Requests:
+ - Post Requests: <br />
 	 Add User: localhost:8080/api/v1/users
 	     body: e.g -
 	         {
@@ -28,18 +29,18 @@ a User Management REST API system.
 	         "dateOfBirth": 0
 	         }
 
-	 Edit User by Id: localhost:8080/api/v1/users/{id}
-        body required, e.g:
-           {
-           "firstName": "dotan",
-           "lastName": "asrer",
-           "weight": 0.0,
-           "dateOfBirth": 0
-           }
+	  Edit User by Id: localhost:8080/api/v1/users/{id}
+		  body required, e.g:
+	           {
+	           "firstName": "dotan",
+	           "lastName": "asrer",
+	           "weight": 0.0,
+	           "dateOfBirth": 0
+	           }
         Add test data:
 		localhost:8080/api/v1/users/insertTestData/{amountOfUsers}
             use this endpoint to generate test data for testing purpose.
             e.g localhost:8080/api/v1/users/insertTestData/112
- - Delete Requests:
-	    Delete User by Id: localhost:8080/api/v1/users/{id}
+  - Delete Requests:  <br />
+	     Delete User by Id: localhost:8080/api/v1/users/{id}
 	        no body required
