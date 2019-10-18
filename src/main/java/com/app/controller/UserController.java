@@ -1,9 +1,9 @@
 package com.app.controller;
 
-import com.app.environment.YAMLConfig;
 import com.app.model.User;
 import com.app.service.IUserService;
 import com.app.service.UserServiceImpl;
+import com.app.testData.RandomDataUserInjection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -52,4 +52,9 @@ public class UserController {
         userService.updateUser(id, user);
     }
 
+    @PostMapping(path = "insertTestData/{amount}")
+    public void addRandomTestUsers(@PathVariable("amount")int amount) throws Exception {
+        RandomDataUserInjection.injectUsers(amount);
+
+    }
 }

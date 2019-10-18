@@ -3,12 +3,14 @@ package com.app;
 import com.app.model.User;
 import com.app.service.IUserService;
 import com.app.service.UserServiceImpl;
+import com.app.testData.DataGenerator;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -20,18 +22,31 @@ public class DemoApplicationTests {
 
 	@Ignore
 	@Test
-	public void contextLoads() throws SQLException {
+	public void contextLoads() throws SQLException, IOException {
 
-		logger.info("this is a logger test");
-		User user = new User();
-		user.setFirstName("somefirtName");
-		user.setLastName("someLastName");
+		logger.info("test start");
 		IUserService userService = new UserServiceImpl();
-		logger.info("adding user to db");
-		userService.addUser(user);
-		List<User> allUsers = userService.getAllUsers();
-		User user1 = (User)userService.getUser(1);
+		int lastId;
+		if (userService.getAllUsers() == null) {
+			lastId = 0;
+		} else {
+			lastId = userService.getAllUsers().size();
+		}
 
+		DataGenerator dataGenerator = new DataGenerator();
+		for (int i = lastId; i < lastId + 10; i++) {
+			User user = dataGenerator.getUser(i);
+			userService.addUser(user);
+		}
+
+		List<User> allUsers = userService.getAllUsers();
+		for (int i = 0; i < allUsers.size(); i++) {
+			String firstName = allUsers.get(i).getFirstName();
+			String lastName = allUsers.get(i).getLastName();
+
+			logger.info("first name: " + firstName);
+			logger.info("last name: " + lastName);
+		}
 	}
 
 }

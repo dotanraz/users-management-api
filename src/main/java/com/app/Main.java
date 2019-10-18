@@ -1,6 +1,7 @@
 package com.app;
 
 import com.app.environment.YAMLConfig;
+import com.app.testData.RandomDataUserInjection;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
