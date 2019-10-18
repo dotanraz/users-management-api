@@ -16,31 +16,32 @@ a User Management REST API system.
 
 **Endpoints**
  - Get Requests:<br />
-	 Get All Users: localhost:8080/api/v1/users
-     Get User by Id: localhost:8080/api/v1/users/{id}
-	     e.g localhost:8080/api/v1/users/33
+	 Get All Users: localhost:8080/api/v1/users <br />
+     Get User by Id: localhost:8080/api/v1/users/{id} <br />
+	     e.g localhost:8080/api/v1/users/33 <br />
  - Post Requests: <br />
-	 Add User: localhost:8080/api/v1/users
-	     body: e.g -
+	 Add User: localhost:8080/api/v1/users <br />
+	     body: e.g - <br />
 	         {
 	         "firstName": "dotan",
 	         "lastName": "asrer",
 	         "weight": 0.0,
 	         "dateOfBirth": 0
 	         }
-
-	  Edit User by Id: localhost:8080/api/v1/users/{id}
-		  body required, e.g:
+<br />
+	  Edit User by Id: localhost:8080/api/v1/users/{id} <br />
+		  body required, e.g: <br />
 	           {
 	           "firstName": "dotan",
 	           "lastName": "asrer",
 	           "weight": 0.0,
 	           "dateOfBirth": 0
 	           }
-        Add test data:
-		localhost:8080/api/v1/users/insertTestData/{amountOfUsers}
-            use this endpoint to generate test data for testing purpose.
-            e.g localhost:8080/api/v1/users/insertTestData/112
+	           <br />
+        Add test data: <br />
+		localhost:8080/api/v1/users/insertTestData/{amountOfUsers} <br />
+            use this endpoint to generate test data for testing purpose. <br />
+            e.g localhost:8080/api/v1/users/insertTestData/112 <br />
   - Delete Requests:  <br />
-	     Delete User by Id: localhost:8080/api/v1/users/{id}
-	        no body required
+	     Delete User by Id: localhost:8080/api/v1/users/{id} <br />
+	        no body required <br />
