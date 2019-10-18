@@ -27,8 +27,8 @@ a User Management REST API system.
 	         "lastName": "asrer",
 	         "weight": 0.0,
 	         "dateOfBirth": 0
-	         }
-<br />
+	         } <br />
+
 	  Edit User by Id: localhost:8080/api/v1/users/{id} <br />
 		  body required, e.g: <br />
 	           {
@@ -36,8 +36,7 @@ a User Management REST API system.
 	           "lastName": "asrer",
 	           "weight": 0.0,
 	           "dateOfBirth": 0
-	           }
-	           <br />
+	           } <br />
         Add test data: <br />
 		localhost:8080/api/v1/users/insertTestData/{amountOfUsers} <br />
             use this endpoint to generate test data for testing purpose. <br />
