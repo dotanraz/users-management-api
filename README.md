@@ -12,7 +12,7 @@ a User Management REST API system.
         two options:
             1. Run Main.java
             2. As a Docker Container - run buildDockerImage.sh,
-               than run:  Docker run user-mngmnt-api:latest --networks=host
+               than run:  docker run user-mngmnt-api:latest --networks=host
 
 **Endpoints**
  - Get Requests:<br />
@@ -24,19 +24,16 @@ a User Management REST API system.
 	     body: e.g - <br />
 	         {
 	         "firstName": "dotan",
-	         "lastName": "asrer",
-	         "weight": 0.0,
-	         "dateOfBirth": 0
+	         "lastName": "asrer"
 	         } <br />
 
 	  Edit User by Id: localhost:8080/api/v1/users/{id} <br />
 		  body required, e.g: <br />
 	           {
 	           "firstName": "dotan",
-	           "lastName": "asrer",
-	           "weight": 0.0,
-	           "dateOfBirth": 0
+	           "lastName": "asrer"
 	           } <br />
+        
         Add test data: <br />
 		localhost:8080/api/v1/users/insertTestData/{amountOfUsers} <br />
             use this endpoint to generate test data for testing purpose. <br />

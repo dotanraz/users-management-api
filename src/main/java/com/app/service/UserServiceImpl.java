@@ -4,9 +4,6 @@ import com.app.model.User;
 import com.app.sql.QueryExecutor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.beans.PropertyVetoException;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -62,7 +59,7 @@ public class UserServiceImpl implements IUserService{
             int id = (int)row.get("id");
             String firstName = row.get("first_name").toString();
             String lastName = row.get("last_name").toString();
-            users.add(new User(firstName, lastName, 0, 0, id));
+            users.add(new User(firstName, lastName, id));
         });
         return users;
     }

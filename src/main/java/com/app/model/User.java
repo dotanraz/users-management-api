@@ -1,30 +1,19 @@
 package com.app.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class User {
     private String firstName;
     private String lastName;
-    private double weight;
-    private long dateOfBirth;
+
     private int id;
 
-//    public User(@JsonProperty("firstName") String firstName,
-//                @JsonProperty("lastName") String lastName,
-//                @JsonProperty("weight")double weight,
-//                @JsonProperty("dateOfBirth")long dateOfBirth) {
-    public User(String firstName, String lastName, double weight, long dateOfBirth) {
+    public User(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.weight = weight;
-        this.dateOfBirth = dateOfBirth;
     }
 
-    public User(String firstName, String lastName, double weight, long dateOfBirth, int id) {
+    public User(String firstName, String lastName, int id) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.weight = weight;
-        this.dateOfBirth = dateOfBirth;
         this.id = id;
     }
 
@@ -53,22 +42,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
-
-    public long getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(long dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
     }
 
 }

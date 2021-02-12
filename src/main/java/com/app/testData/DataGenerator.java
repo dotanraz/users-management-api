@@ -35,8 +35,6 @@ public class DataGenerator {
         User user = new User();
         user.setFirstName(this.listOfNames.get(getRandomName()));
         user.setLastName(this.listOfNames.get(getRandomName()));
-        user.setDateOfBirth(0);
-        user.setWeight(0);
         return user;
     }
 
