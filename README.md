@@ -16,18 +16,18 @@ a User Management REST API system.
 
 **Endpoints**
  - Get Requests:<br />
-	 Get All Users: localhost:8080/api/v1/users <br />
-     Get User by Id: localhost:8080/api/v1/users/{id} <br />
+	 Get All Users: localhost:8080/api/v1/getAllUsers <br />
+     Get User by Id: localhost:8080/api/v1/getUser/{id} <br />
 	     e.g localhost:8080/api/v1/users/33 <br />
  - Post Requests: <br />
-	 Add User: localhost:8080/api/v1/users <br />
+	 Add User: localhost:8080/api/v1/addUser <br />
 	     body: e.g - <br />
 	         {
 	         "firstName": "dotan",
 	         "lastName": "asrer"
 	         } <br />
 
-	  Edit User by Id: localhost:8080/api/v1/users/{id} <br />
+	  Edit User by Id: localhost:8080/api/v1/updateUser/{id} <br />
 		  body required, e.g: <br />
 	           {
 	           "firstName": "dotan",
@@ -35,9 +35,9 @@ a User Management REST API system.
 	           } <br />
         
         Add test data: <br />
-		localhost:8080/api/v1/users/insertTestData/{amountOfUsers} <br />
+		localhost:8080/api/v1/insertTestData/{amountOfUsers} <br />
             use this endpoint to generate test data for testing purpose. <br />
             e.g localhost:8080/api/v1/users/insertTestData/112 <br />
   - Delete Requests:  <br />
-	     Delete User by Id: localhost:8080/api/v1/users/{id} <br />
+	     Delete User by Id: localhost:8080/api/v1/deleteUser/{id} <br />
 	        no body required <br />
