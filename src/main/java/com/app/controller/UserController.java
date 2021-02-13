@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-@RequestMapping("api/v1/users")
+@RequestMapping("api/v1/")
 @RestController
 public class UserController {
 
@@ -20,7 +20,7 @@ public class UserController {
 
     }
 
-    @GetMapping
+    @GetMapping(path = "getAllUsers")
     public Object getAllUsers() throws Exception {
         List<User> allUsers = userService.getAllUsers();
         if (allUsers == null) {
@@ -29,7 +29,7 @@ public class UserController {
         else return allUsers;
     }
 
-    @GetMapping(path = "{id}")
+    @GetMapping(path = "getUser/{id}")
     public Object getUserById(@PathVariable("id")int id) throws Exception {
         if (userService.getUser(id) == null) {
             return "no user with that id!";
@@ -37,17 +37,17 @@ public class UserController {
         else return userService.getUser(id);
     }
 
-    @PostMapping
+    @PostMapping(path = "addUser")
     public void addUser(@RequestBody User user) throws Exception {
         userService.addUser(user);
     }
 
-    @DeleteMapping(path = "{id}")
+    @DeleteMapping(path = "deleteUser/{id}")
     public void deleteUser(@PathVariable("id")int id) throws Exception {
         userService.deleteUser(id);
     }
 
-    @PostMapping(path = "{id}")
+    @PostMapping(path = "updateUser/{id}")
     public void updateUser(@PathVariable("id")int id, @RequestBody User user) throws Exception {
         userService.updateUser(id, user);
     }
